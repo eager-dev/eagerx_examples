@@ -1,5 +1,5 @@
 ***********************
-EAGERx Template Package
+eagerx_examples package
 ***********************
 
 .. image:: https://img.shields.io/badge/License-Apache_2.0-blue.svg
@@ -10,16 +10,16 @@ EAGERx Template Package
    :target: https://github.com/psf/black
    :alt: codestyle
 
-.. image:: https://github.com/eager-dev/eagerx/actions/workflows/ci.yml/badge.svg?branch=master
-  :target: https://github.com/eager-dev/eagerx/actions/workflows/ci.yml
+.. image:: https://github.com/eager-dev/eagerx_examples/actions/workflows/ci.yml/badge.svg?branch=master
+  :target: https://github.com/eager-dev/eagerx_examples/actions/workflows/ci.yml
   :alt: Continuous Integration
 
 .. contents:: Table of Contents
     :depth: 2
 
-What is the EAGERx template package?
-====================================
-This repository/package serves as a template than be used to develop your own EAGERx packages.
+What is the *eagerx_examples* package?
+======================================
+This repository/package contains coding examples for EAGERx.
 EAGERx (Engine Agnostic Gym Environments for Robotics) enables users to easily define new tasks, switch from one sensor to another, and switch from simulation to reality with a single line of code by being invariant to the physics engine.
 `The core repository is available here <https://github.com/eager-dev/eagerx>`_.
 `Full documentation and tutorials (including package creation and contributing) are available here <https://eagerx.readthedocs.io/en/master/>`_.
@@ -31,7 +31,7 @@ You can install the package using pip:
 
 .. code:: shell
 
-    pip3 install eagerx
+    pip3 install eagerx-examples
 
 .. note::
     EAGERx depends on a minimal ROS installation. Fortunately, you **can** use eagerx anywhere as you would any python package,
