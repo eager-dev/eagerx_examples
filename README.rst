@@ -21,7 +21,9 @@ What is the *eagerx_examples* package?
 ======================================
 This repository/package contains coding examples for EAGERx.
 EAGERx (Engine Agnostic Gym Environments for Robotics) enables users to easily define new tasks, switch from one sensor to another, and switch from simulation to reality with a single line of code by being invariant to the physics engine.
+
 `The core repository is available here <https://github.com/eager-dev/eagerx>`_.
+
 `Full documentation and tutorials (including package creation and contributing) are available here <https://eagerx.readthedocs.io/en/master/>`_.
 
 Installation
