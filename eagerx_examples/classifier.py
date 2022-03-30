@@ -27,6 +27,7 @@ class Classifier(Node):
         cam_rate: float,
         data: str,
         show: bool = False,
+        epochs: int = 30,
         window: int = 3,
         state_range: Optional[List[List[float]]] = None,
         process: Optional[int] = process.BRIDGE,
@@ -40,6 +41,7 @@ class Classifier(Node):
         :param rate: Rate at which callback is called.
         :param cam_rate: Rate at which images are produced
         :param data: Path to dataste
+        :param epochs: Number of epochs to train
         :param show: Flag to plot train results
         :param window: Default window length of image input.
         :param state_range: state range [[min], [max]]. This is not enforced, but merely used for space_converters.
@@ -58,7 +60,7 @@ class Classifier(Node):
         spec.config.update(params)
 
         # Modify custom node params
-        spec.config.update({"cam_rate": cam_rate, "data": data, "show": show})
+        spec.config.update({"cam_rate": cam_rate, "data": data, "show": show, "epochs": epochs})
 
         # Set window length of images
         spec.inputs.image.window = window
@@ -68,13 +70,13 @@ class Classifier(Node):
             "Space_Float32MultiArray", state_range[0], state_range[1], dtype="float32"
         )
 
-    def initialize(self, cam_rate, data, show):
+    def initialize(self, cam_rate, data, show, epochs):
         self.cam_rate = cam_rate
         # Prepare data
         train, test = prepare_dataset(data, show=show)
         # Train model
         self.classifier = Model()
-        self.classifier.train_model(train, test, show=show, epochs=30, batch_size=64)
+        self.classifier.train_model(train, test, show=show, epochs=epochs, batch_size=64)
 
     @register.states()
     def reset(self):
