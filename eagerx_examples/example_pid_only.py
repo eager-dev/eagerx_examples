@@ -1,6 +1,6 @@
-def example_pid_only(name, eps, eval_eps):
+def example_pid_only(name, eps, eval_eps, eps_length=200):
     # EAGERx imports
-    from eagerx import Object, Bridge, Node, initialize, log, process
+    from eagerx import Object, Bridge, Node, initialize, log
     from eagerx.core.graph import Graph
     import eagerx.bridges.openai_gym as eagerx_gym
     import eagerx_examples  # noqa: F401
@@ -34,7 +34,7 @@ def example_pid_only(name, eps, eval_eps):
     import stable_baselines3 as sb
 
     model = sb.SAC("MlpPolicy", env, verbose=1)
-    model.learn(total_timesteps=int(eps * 200))
+    model.learn(total_timesteps=int(eps * eps_length))
 
     # Evaluate trained policy
     for i in range(eval_eps):

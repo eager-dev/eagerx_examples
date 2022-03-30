@@ -100,7 +100,29 @@ jobs:
             libxcb-randr0 \
             libxcb-render-util0 \
             libxcb-xinerama0 \
-            libopengl0
+            libopengl0 \
+            libglu1-mesa-dev \
+            libgl1-mesa-dev \
+            libosmesa6-dev \
+            xvfb \
+            ffmpeg
+          Xvfb -screen 0 1024x768x24 &
+          export DISPLAY=:0
+          # Wait for the file to come up
+          display=0
+          file="/tmp/.X11-unix/X$display"
+          for i in $(seq 1 10); do
+              if [ -e "$file" ]; then
+          	break
+              fi
+
+              echo "Waiting for $file to be created (try $i/10)"
+              sleep "$i"
+          done
+          if ! [ -e "$file" ]; then
+              echo "Timing out: $file was not created"
+              exit 1
+          fi
       #----------------------------------------------
       #    add matrix specifics and run test suite
       #----------------------------------------------

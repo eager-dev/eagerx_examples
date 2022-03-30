@@ -1,6 +1,6 @@
-def example_classifier(name, eps, eval_eps):
+def example_classifier(name, eps, eval_eps, eps_length=200, classifier_epochs=30):
     # EAGERx imports
-    from eagerx import Object, Bridge, Node, initialize, log, process
+    from eagerx import Object, Bridge, Node, initialize, log
     from eagerx.core.graph import Graph
     import eagerx.bridges.openai_gym as eagerx_gym
     import eagerx_examples  # noqa: F401
@@ -23,7 +23,9 @@ def example_classifier(name, eps, eval_eps):
     import os
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    classifier = Node.make("Classifier", "classifier", rate=20, cam_rate=20, data=dir_path + "/../data/with_actions.h5")
+    classifier = Node.make(
+        "Classifier", "classifier", rate=20, cam_rate=20, epochs=classifier_epochs, data=dir_path + "/../data/with_actions.h5"
+    )
     pid = Node.make("PidController", "pid", rate=20, gains=[8, 1, 0], y_range=[-4, 4])
 
     # Define graph (agnostic) & connect nodes
@@ -48,7 +50,7 @@ def example_classifier(name, eps, eval_eps):
     import stable_baselines3 as sb
 
     model = sb.SAC("MlpPolicy", env, verbose=1)
-    model.learn(total_timesteps=int(eps * 200))
+    model.learn(total_timesteps=int(eps * eps_length))
 
     # Evaluate trained policy
     for i in range(eval_eps):
