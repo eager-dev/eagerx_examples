@@ -100,7 +100,12 @@ jobs:
             libxcb-randr0 \
             libxcb-render-util0 \
             libxcb-xinerama0 \
-            libopengl0
+            libopengl0 \
+            libglu1-mesa-dev \
+            libgl1-mesa-dev \
+            libosmesa6-dev \
+            xvfb \
+            ffmpeg
           Xvfb -screen 0 1024x768x24 &
           export DISPLAY=:0
           # Wait for the file to come up
