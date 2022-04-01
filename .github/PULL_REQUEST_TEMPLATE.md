@@ -25,10 +25,9 @@
 - [ ] My change requires a change to the documentation.
 - [ ] I have updated the tests accordingly (*required for a bug fix or a new feature*).
 - [ ] I have updated the documentation accordingly.
-- [ ] I have reformatted the code using `make codestyle` (**required**)
-- [ ] I have checked the codestyle using `make check-codestyle` and `make lint` (**required**)
-- [ ] I have ensured `make pytest` passes. (**required**)
-- [ ] I have checked that the documentation builds using `make doc` (**required**)
+- [ ] I have reformatted the code using `make codestyle` (**required**).
+- [ ] I have checked the codestyle using `make check-codestyle` and `make lint` (**required**).
+- [ ] I have ensured `make pytest` passes. (**required**).
 
 Note: we are using a maximum length of 127 characters per line
 
