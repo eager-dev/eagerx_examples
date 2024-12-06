@@ -13,7 +13,7 @@ include = ["data/with_actions.h5"]
 python = "^3.6.2"
 eagerx = "^0.1.10"
 h5py = "^2.9.0"
-stable-baselines3 = "1.1.0"
+stable-baselines3 = "1.2.0"
 pyglet = "^1.5.21"
 
 [tool.poetry.dev-dependencies]
